@@ -1,0 +1,7 @@
+.clangd/
+bin/
+cmake_install.cmale
+CMakeCache.txt
+CMakeFiles/
+Makefile
+compile_commands.json
