@@ -21,7 +21,7 @@ set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
 #set_target_properties(mylib PROPERTIES SOVERSION 1)
 
-set_target_properties(pho PROPERTIES PUBLIC_HEADER include/pho.h)
+set_target_properties(pho PROPERTIES PUBLIC_HEADER include/phoLib.h)
 
 # private header
 target_include_directories(pho PRIVATE .)

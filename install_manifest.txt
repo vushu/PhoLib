@@ -1,4 +1,4 @@
-/usr/lib/libpho.so.1.0.1
-/usr/lib/libpho.so
-/usr/lib/pho.h
-/usr/include/pho.h
+/usr/local/lib/libpho.so.1.0.1
+/usr/local/lib/libpho.so
+/usr/local/lib/phoLib.h
+/usr/local/include/phoLib.h

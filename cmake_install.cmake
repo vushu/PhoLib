@@ -1,8 +1,8 @@
-# Install script for directory: /home/vushu/coding/cpp/engine
+# Install script for directory: /home/vushu/coding/cpp/phoLib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/usr")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -39,12 +39,12 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/vushu/coding/cpp/engine/phoLib/cmake_install.cmake")
+  include("/home/vushu/coding/cpp/phoLib/phoLib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("/home/vushu/coding/cpp/engine/sandbox/cmake_install.cmake")
+  include("/home/vushu/coding/cpp/phoLib/sandbox/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -55,5 +55,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vushu/coding/cpp/engine/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/vushu/coding/cpp/phoLib/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
