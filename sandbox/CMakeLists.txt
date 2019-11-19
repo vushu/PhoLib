@@ -9,7 +9,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set(SOURCE_FILES
-    src/main.cpp
+    src/sandbox_app.cpp
     )
 
 add_executable(PhoSandbox ${SOURCE_FILES})

@@ -4,11 +4,16 @@
 class SandboxApp : public PhoLib::Application {
     public:
         // constructors, asssignment, destructor
-        SandboxApp();
-        SandboxApp(const SandboxApp&);
-        SandboxApp& operator=(const SandboxApp&);
-        ~SandboxApp();
+        SandboxApp() {}
 
-    private:
+        ~SandboxApp() {}
+
 
 };
+
+
+int main () {
+    SandboxApp* sandbox = new SandboxApp();
+    sandbox->run();
+    delete sandbox;
+}
