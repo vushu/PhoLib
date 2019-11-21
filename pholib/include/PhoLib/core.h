@@ -1,6 +1,6 @@
 #ifndef CORE_H
 #define CORE_H
-namespace Pho {
+namespace PhoLib {
 
 }
 #endif

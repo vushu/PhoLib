@@ -70,13 +70,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/PhoLib/common" TYPE FILE FILES
-    "/home/vushu/coding/cpp/phoLib/pholib/src/common/application.h"
-    "/home/vushu/coding/cpp/phoLib/pholib/src/common/core.h"
-    )
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/PhoLib" TYPE FILE FILES "/home/vushu/coding/cpp/phoLib/pholib/src/pholib.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/vushu/coding/cpp/phoLib/pholib/include/")
 endif()
 

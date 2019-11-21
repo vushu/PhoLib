@@ -4,43 +4,54 @@ set(PROJECT_VERSION "1.0.1")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+include(GNUInstallDirs)
+
+set(HEADER_FILES
+    include/PhoLib/pholib.h
+    include/PhoLib/application.h
+    include/PhoLib/core.h
+    include/PhoLib/log.h
+    )
 
 set(SOURCE_FILES
-    src/pholib.h
-    src/common/application.h
-    src/common/core.h
-    src/common/application.cpp
+    include/PhoLib/pholib.h
+    include/PhoLib/application.h
+    include/PhoLib/core.h
+    include/PhoLib/log.h
+    src/log.cpp
+    src/application.cpp
     )
 
 project(pho VERSION ${PROJECT_VERSION} DESCRIPTION "phoLib a simple and small library for game development")
 
-add_library(pho SHARED ${SOURCE_FILES})
+add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 #window compatibility
 set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
+    PRIVATE src)
 
-#set_target_properties(mylib PROPERTIES SOVERSION 1)
-
-#set_target_properties(pho PROPERTIES PUBLIC_HEADER src/pholib.h)
-
-# private header
-target_include_directories(pho PRIVATE .)
 
 message(BUILDING_pho...)
 # Let's set compiler-specific flags
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # G++
-    target_compile_options(pho PRIVATE -Wall -Wextra)
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     # MSVC
-    target_compile_options(pho PRIVATE /EHsc /MTd /W2 /c)
+    target_compile_options(${PROJECT_NAME} PRIVATE /EHsc /MTd /W2 /c)
     # Set the DLLEXPORT variable to export symbols
-    target_compile_definitions(pho PRIVATE WIN_EXPORT)
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WIN_EXPORT)
 endif()
 
 #set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
-set_target_properties(pho
+set_target_properties(${PROJECT_NAME}
     PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION})
@@ -54,18 +65,39 @@ pkg_search_module(GLFW REQUIRED glfw3)
 
 include_directories(${GLFW_INCLUDE_DIRS})
 
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+#target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} spdlog)
 
-#creating library
+install(TARGETS ${PROJECT_NAME} spdlog
+    EXPORT PhoLibConfig
+    ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-target_link_libraries(pho ${GLFW_LIBRARIES})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-install(TARGETS pho DESTINATION lib)
+export(TARGETS ${PROJECT_NAME} spdlog FILE PhoLibConfig.cmake)
 
-install(FILES
-    src/common/application.h
-    src/common/core.h
-    DESTINATION include/PhoLib/common)
+#install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)
 
-install(FILES src/pholib.h DESTINATION include/PhoLib)
+
+
+
+#install(TARGETS pho DESTINATION lib)
+#install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
+# copying
+#install(DIRECTORY ../thirdparty/spdlog/include/ DESTINATION include/PhoLib)
+
+#install(FILES
+#${HEADER_FILES}
+#DESTINATION include/PhoLib)
+
+#FILE(GLOB files include/PhoLib/*.hxx)
+##file(GLOB FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.hxx")
+
+#install(FILES
+#${files}
+#DESTINATION include/PhoLib/)
+
+#install(FILES src/pholib.h DESTINATION include/PhoLib)
 

@@ -7,9 +7,7 @@
 
 
 rm CMakeCache.txt
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/
-
+cmake -DCMAKE_INSTALL_PREFIX=/_install
 make
-sudo make install
+make install
 
-./bin/PhoSandbox

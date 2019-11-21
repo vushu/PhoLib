@@ -11,6 +11,8 @@ void helloAgain() {
     hello();
 }
 
-#include "common/application.h"
+
+#include "application.h"
+#include "log.h"
 
 #endif
