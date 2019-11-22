@@ -6,8 +6,11 @@
 # Last Modified By  : Vushu <danvu.hustle@gmail.com>
 
 
-rm CMakeCache.txt
-cmake -DCMAKE_INSTALL_PREFIX=/_install
-make
-make install
+#rm CMakeCache.txt
+cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
 
+make
+sudo make install
+
+echo "Test by running ./bin/PhoSandbox"

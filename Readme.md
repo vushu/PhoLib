@@ -1,8 +1,17 @@
-#external directory
-cmake -DCMAKE_INSTALL_PREFIX=./_install
-#install on computer
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/
+## Installation
 
-cmake .
-make
-sudo make install
+Just do  
+
+```
+./install.sh
+```
+
+## Change installation path
+
+default path is installed to /usr/local  
+
+edit install.sh if you want another path
+
+
+
+
