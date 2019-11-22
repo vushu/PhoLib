@@ -8,3 +8,4 @@ compile_commands.json
 *.so
 cmake_install.cmake
 install_manifest
+build/

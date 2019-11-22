@@ -6,9 +6,9 @@
 # Last Modified By  : Vushu <danvu.hustle@gmail.com>
 
 
-rm CMakeCache.txt
+#rm CMakeCache.txt
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=/usr/local/
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
 
 make
 sudo make install
