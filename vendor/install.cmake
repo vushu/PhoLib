@@ -10,6 +10,8 @@
 set(SPDLOG_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include)
     #CACHE PATH "spdlog include directory")
 
+    #include_directories(${SPDLOG_INCLUDE_DIR})
+
 message(${SPDLOG_INCLUDE_DIR})
 
 install(DIRECTORY ${SPDLOG_INCLUDE_DIR}/spdlog DESTINATION include)
@@ -22,9 +24,7 @@ target_include_directories(spdlog INTERFACE
     $<INSTALL_INTERFACE:include>)
 
 install(TARGETS spdlog EXPORT spdlog-config DESTINATION include)
-
 #install(EXPORT spdlog-config DESTINATION share/spdlog/cmake)
 
-message("done with spdlog")
 
 #endif()

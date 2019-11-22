@@ -14,5 +14,5 @@ set(SOURCE_FILES
 
 add_executable(PhoSandbox ${SOURCE_FILES})
 
-target_link_libraries(PhoSandbox pho)
+target_link_libraries(PhoSandbox PhoLib)
 

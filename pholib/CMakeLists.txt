@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(GNUInstallDirs)
 
-set(HEADER_FILES
+set(PHOLIB_INCLUDE_DIRS
     include/PhoLib/pholib.h
     include/PhoLib/application.h
     include/PhoLib/core.h
@@ -24,7 +24,7 @@ set(SOURCE_FILES
     src/application.cpp
     )
 
-project(pho VERSION ${PROJECT_VERSION} DESCRIPTION "phoLib a simple and small library for game development")
+project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "phoLib a simple and small library for game development")
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 #window compatibility
@@ -63,7 +63,7 @@ find_package(PkgConfig REQUIRED)
 #pkg glfw3
 pkg_search_module(GLFW REQUIRED glfw3)
 
-include_directories(${GLFW_INCLUDE_DIRS})
+include_directories(${GLFW_INCLUDE_DIRS} ${SPDLOG_INCLUDE_DIR})
 
 #target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} spdlog)
@@ -74,30 +74,9 @@ install(TARGETS ${PROJECT_NAME} spdlog
     LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/phoLib)
 
 export(TARGETS ${PROJECT_NAME} spdlog FILE PhoLibConfig.cmake)
 
 #install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)
-
-
-
-
-#install(TARGETS pho DESTINATION lib)
-#install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ DESTINATION include)
-# copying
-#install(DIRECTORY ../thirdparty/spdlog/include/ DESTINATION include/PhoLib)
-
-#install(FILES
-#${HEADER_FILES}
-#DESTINATION include/PhoLib)
-
-#FILE(GLOB files include/PhoLib/*.hxx)
-##file(GLOB FILES "${CMAKE_CURRENT_SOURCE_DIR}/*.hxx")
-
-#install(FILES
-#${files}
-#DESTINATION include/PhoLib/)
-
-#install(FILES src/pholib.h DESTINATION include/PhoLib)
 

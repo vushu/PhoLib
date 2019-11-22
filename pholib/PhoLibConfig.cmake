@@ -20,7 +20,7 @@ endif()
 set(_targetsDefined)
 set(_targetsNotDefined)
 set(_expectedTargets)
-foreach(_expectedTarget pho spdlog)
+foreach(_expectedTarget PhoLib spdlog)
   list(APPEND _expectedTargets ${_expectedTarget})
   if(NOT TARGET ${_expectedTarget})
     list(APPEND _targetsNotDefined ${_expectedTarget})
@@ -45,10 +45,10 @@ unset(_targetsNotDefined)
 unset(_expectedTargets)
 
 
-# Create imported target pho
-add_library(pho SHARED IMPORTED)
+# Create imported target PhoLib
+add_library(PhoLib SHARED IMPORTED)
 
-set_target_properties(pho PROPERTIES
+set_target_properties(PhoLib PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/home/vushu/coding/cpp/phoLib/pholib/include"
   INTERFACE_LINK_LIBRARIES "spdlog"
 )
@@ -60,11 +60,11 @@ set_target_properties(spdlog PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "/home/vushu/coding/cpp/phoLib/vendor/spdlog/include"
 )
 
-# Import target "pho" for configuration ""
-set_property(TARGET pho APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
-set_target_properties(pho PROPERTIES
-  IMPORTED_LOCATION_NOCONFIG "/home/vushu/coding/cpp/phoLib/pholib/libpho.so.1.0.1"
-  IMPORTED_SONAME_NOCONFIG "libpho.so.1.0.1"
+# Import target "PhoLib" for configuration ""
+set_property(TARGET PhoLib APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
+set_target_properties(PhoLib PROPERTIES
+  IMPORTED_LOCATION_NOCONFIG "/home/vushu/coding/cpp/phoLib/pholib/libPhoLib.so.1.0.1"
+  IMPORTED_SONAME_NOCONFIG "libPhoLib.so.1.0.1"
   )
 
 # This file does not depend on other imported targets which have
