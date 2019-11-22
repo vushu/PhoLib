@@ -24,7 +24,7 @@ set(SOURCE_FILES
     src/application.cpp
     )
 
-project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "phoLib a simple and small library for game development")
+project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "PhoLib a simple and small library for game development")
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 #window compatibility
@@ -36,8 +36,6 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
     PRIVATE src)
 
-
-message(BUILDING_pho...)
 # Let's set compiler-specific flags
 if (${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     # G++
@@ -49,7 +47,6 @@ elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
     target_compile_definitions(${PROJECT_NAME} PRIVATE WIN_EXPORT)
 endif()
 
-#set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 set_target_properties(${PROJECT_NAME}
     PROPERTIES

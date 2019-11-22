@@ -7,10 +7,11 @@
 
 
 #rm CMakeCache.txt
+mkdir -p build
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
 
 make
 sudo make install
 
-echo "Test by running ./bin/PhoSandbox"
+echo "Test by running ./build/bin/PhoSandbox"
