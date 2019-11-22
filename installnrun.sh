@@ -7,6 +7,7 @@
 
 
 rm CMakeCache.txt
+cd build
 cmake -DCMAKE_INSTALL_PREFIX=/usr/local/
 
 make
