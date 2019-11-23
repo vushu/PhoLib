@@ -20,11 +20,4 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * File              : application_event.h
- * Author            : Vushu <danvu.hustle@gmail.com>
- * Date              : 22.11.2019
- * Last Modified Date: 22.11.2019
- * Last Modified By  : Vushu <danvu.hustle@gmail.com>
- */
 

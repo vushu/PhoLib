@@ -29,7 +29,7 @@
  */
 #ifndef PHO_H
 #define PHO_H
-#include <iostream>
+#include "pholibpch.h"
 
 #include "application.h"
 #include "log.h"

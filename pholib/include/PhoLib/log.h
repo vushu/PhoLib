@@ -28,8 +28,8 @@
  * Last Modified By  : Vushu <danvu.hustle@gmail.com>
  */
 #pragma once
-#include <memory>
-#include <spdlog/logger.h>
+#include "pholibpch.h"
+#include "spdlog/logger.h"
 
 namespace PhoLib {
 

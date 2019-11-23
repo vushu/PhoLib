@@ -20,11 +20,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * File              : event.h
- * Author            : Vushu <danvu.hustle@gmail.com>
- * Date              : 22.11.2019
- * Last Modified Date: 22.11.2019
- * Last Modified By  : Vushu <danvu.hustle@gmail.com>
- */
 
+namespace PhoLib {
+
+    enum class EventType {
+        none = 0,
+        window_close,
+        window_resize,
+
+    };
+}
