@@ -1,5 +1,5 @@
 /**
- * pholib/include/PhoLib/core.h
+ * pholib/src/application.cpp
  * Copyright (c) 2019 Vushu <danvu.hustle@gmail.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,15 +21,38 @@
  * SOFTWARE.
  */
 /**
- * File              : core.h
+ * File              : application.cpp
  * Author            : Vushu <danvu.hustle@gmail.com>
  * Date              : 22.11.2019
  * Last Modified Date: 22.11.2019
  * Last Modified By  : Vushu <danvu.hustle@gmail.com>
  */
-#ifndef CORE_H
-#define CORE_H
+#include "PhoLib/core/application.h"
+#include "PhoLib/core/log.h"
+//#include ""
 namespace PhoLib {
 
+    Application::Application() {
+        Log::init();
+    }
+
+    Application::~Application() {
+    }
+
+    void Application::run() {
+        is_running = true;
+        PHO_INFO("PhoLib App Running");
+        while (is_running) {
+
+        }
+        PHO_INFO("PhoLib App Ended");
+    }
+
+    void Application::stop(){
+        is_running = false;
+    }
+
 }
-#endif
+
+
+

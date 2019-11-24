@@ -4,29 +4,26 @@ set(PROJECT_VERSION "1.0.2")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+#set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(GNUInstallDirs)
 
 set(PHOLIB_INCLUDE_DIRS
+    include/PhoLib/pholibpch.h
     include/PhoLib/pholib.h
-    include/PhoLib/application.h
-    include/PhoLib/core.h
-    include/PhoLib/log.h
+    include/PhoLib/core/application.h
+    include/PhoLib/core/core.h
+    include/PhoLib/core/log.h
     )
 
 set(SOURCE_FILES
-    include/PhoLib/pholib.h
-    include/PhoLib/application.h
-    include/PhoLib/core.h
-    include/PhoLib/log.h
-    src/log.cpp
-    src/application.cpp
+    src/core/log.cpp
+    src/core/application.cpp
     )
 
 project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "PhoLib a simple and small library for game development")
 
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+add_library(${PROJECT_NAME} SHARED ${PHOLIB_INCLUDE_DIRS} ${SOURCE_FILES} )
 #window compatibility
 set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
@@ -75,5 +72,6 @@ install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 export(TARGETS ${PROJECT_NAME} spdlog FILE PhoLibConfig.cmake)
 
+#install(EXPORT spdlog-config DESTINATION share/spdlog/cmake)
 #install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)
 

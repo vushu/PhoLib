@@ -31,7 +31,7 @@
 #define PHO_H
 #include "pholibpch.h"
 
-#include "application.h"
-#include "log.h"
+#include "core/application.h"
+#include "core/log.h"
 
 #endif

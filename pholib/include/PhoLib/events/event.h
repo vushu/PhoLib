@@ -21,12 +21,20 @@
  * SOFTWARE.
  */
 
+#pragma once
+#include "PhoLib/core/core.h"
+
+
 namespace PhoLib {
 
-    enum class EventType {
+    enum class Event_type {
         none = 0,
         window_close,
         window_resize,
+    };
 
+    enum class Event_category {
+        none = 0,
+        EventCategoryApplication = BIT(0),
     };
 }

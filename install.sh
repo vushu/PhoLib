@@ -12,6 +12,20 @@ cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/
 
 make
-sudo make install
+if [ ! -f ./compile_commands.json ]; then
+    read -r -p "Do you want to add compile_commands.json to root? [y/N] " response
+
+    case "$response" in
+        [yY][eE][sS]|[yY])
+            ln -s ./build/compile_commands.json ./
+            ;;
+        *)
+
+            ;;
+    esac
+
+fi
+#sudo make install
+echo "To install to your system: sudo make install"
 
 echo "Test by running ./build/bin/PhoSandbox"
