@@ -26,6 +26,6 @@ if [ ! -f ./compile_commands.json ]; then
 
 fi
 #sudo make install
-echo "To install to your system: sudo make install"
+echo "To install to your system: cd build sudo make install"
 
 echo "Test by running ./build/bin/PhoSandbox"

@@ -9,11 +9,11 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 include(GNUInstallDirs)
 
 set(PHOLIB_INCLUDE_DIRS
-    include/PhoLib/pholibpch.h
-    include/PhoLib/pholib.h
-    include/PhoLib/core/application.h
-    include/PhoLib/core/core.h
-    include/PhoLib/core/log.h
+    include/pholib/pholibpch.h
+    include/pholib/pholib.h
+    include/pholib/core/application.h
+    include/pholib/core/core.h
+    include/pholib/core/log.h
     )
 
 set(SOURCE_FILES
@@ -26,7 +26,7 @@ file(GLOB ALL_SOURCES
     "*.cpp"
     )
 
-project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "PhoLib a simple and small library for game development")
+project(pholib VERSION ${PROJECT_VERSION} DESCRIPTION "PhoLib a simple and small library for game development")
 
 file(GLOB_RECURSE source_list
     "${CMAKE_CURRENT_LIST_DIR}/src/core/*.cpp")
@@ -34,8 +34,6 @@ file(GLOB_RECURSE source_list
 file(GLOB_RECURSE header_list
     "${CMAKE_CURRENT_LIST_DIR}/include/*.h")
 
-#add_library(${PROJECT_NAME} SHARED ${source_list})
-#add_library(${PROJECT_NAME} SHARED ${PHOLIB_INCLUDE_DIRS} ${SOURCE_FILES})
 add_library(${PROJECT_NAME} SHARED ${header_list} ${source_list})
 #window compatibility
 set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
@@ -65,28 +63,28 @@ set_target_properties(${PROJECT_NAME}
 
 #pkg config
 
-find_package(PkgConfig REQUIRED)
+#find_package(PkgConfig REQUIRED)
 
 #pkg glfw3
-pkg_search_module(GLFW REQUIRED glfw3)
+#pkg_search_module(GLFW REQUIRED glfw3)
 
-include_directories(
-    ${GLFW_INCLUDE_DIRS}
-    ${SPDLOG_INCLUDE_DIR}
-    ${GLAD_INCLUDE_DIR})
+#include_directories(
+    #${GLFW_INCLUDE_DIRS}
+    #${SPDLOG_INCLUDE_DIR}
+    #${GLAD_INCLUDE_DIR})
 
 #target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} spdlog glad)
+target_link_libraries(${PROJECT_NAME} glfw spdlog)
 
 install(TARGETS ${PROJECT_NAME} spdlog
-    EXPORT PhoLibConfig
+    EXPORT pholibConfig
     ARCHIVE  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY  DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME  DESTINATION ${CMAKE_INSTALL_BINDIR})
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-export(TARGETS ${PROJECT_NAME} spdlog glad FILE PhoLibConfig.cmake)
+export(TARGETS ${PROJECT_NAME} glfw spdlog FILE pholibConfig.cmake)
 
 #install(EXPORT spdlog-config DESTINATION share/spdlog/cmake)
 #install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)

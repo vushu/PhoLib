@@ -22,10 +22,11 @@
  */
 
 #pragma once
-#include "PhoLib/core/core.h"
+#include "pholib/core/core.h"
+#include <string>
 
 
-namespace PhoLib {
+namespace pholib {
 
     enum class Event_type {
         none = 0,
@@ -44,5 +45,10 @@ namespace PhoLib {
         event_category_mouse_button = BIT(4),
     };
 
+    class Event {
+        public:
+            bool handled = false;
+            virtual Event_type get_event_type() const = 0;
+    };
 
 }

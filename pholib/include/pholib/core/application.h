@@ -31,7 +31,7 @@
 #define APPLICATION_H
 #include "core.h"
 
-namespace PhoLib {
+namespace pholib {
 
     class Application {
         public:

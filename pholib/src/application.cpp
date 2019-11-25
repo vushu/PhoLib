@@ -27,10 +27,10 @@
  * Last Modified Date: 22.11.2019
  * Last Modified By  : Vushu <danvu.hustle@gmail.com>
  */
-#include "PhoLib/core/application.h"
-#include "PhoLib/core/log.h"
+#include "pholib/core/application.h"
+#include "pholib/core/log.h"
 //#include ""
-namespace PhoLib {
+namespace pholib {
 
     Application::Application() {
         Log::init();

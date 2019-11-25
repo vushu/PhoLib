@@ -28,10 +28,11 @@
  * Last Modified By  : Vushu <danvu.hustle@gmail.com>
  */
 #pragma once
-#include "PhoLib/pholibpch.h"
+#include "pholib/pholibpch.h"
 #include "spdlog/logger.h"
 
-namespace PhoLib {
+
+namespace pholib {
 
     class Log{
         public:
@@ -48,15 +49,16 @@ namespace PhoLib {
 
 // core macros
 //
-#define PHO_CORE_TRACE(...) ::PhoLib::Log::get_core_logger()->trace(__VA_ARGS__)
-#define PHO_CORE_ERROR(...) ::PhoLib::Log::get_core_logger()->error(__VA_ARGS__)
-#define PHO_CORE_WARN(...) ::PhoLib::Log::get_core_logger()->warn(__VA_ARGS__)
-#define PHO_CORE_INFO(...) ::PhoLib::Log::get_core_logger()->info(__VA_ARGS__)
-#define PHO_CORE_FATAL(...) ::PhoLib::Log::get_core_logger()->fatal(__VA_ARGS__)
+#define PHO_CORE_TRACE(...) ::pholib::Log::get_core_logger()->trace(__VA_ARGS__)
+#define PHO_CORE_ERROR(...) ::pholib::Log::get_core_logger()->error(__VA_ARGS__)
+#define PHO_CORE_WARN(...) ::pholib::Log::get_core_logger()->warn(__VA_ARGS__)
+#define PHO_CORE_INFO(...) ::pholib::Log::get_core_logger()->info(__VA_ARGS__)
+#define PHO_CORE_FATAL(...) ::pholib::Log::get_core_logger()->fatal(__VA_ARGS__)
 
 // client macros
-#define PHO_TRACE(...) ::PhoLib::Log::get_client_logger()->trace(__VA_ARGS__)
-#define PHO_ERROR(...) ::PhoLib::Log::get_client_logger()->error(__VA_ARGS__)
-#define PHO_WARN(...) ::PhoLib::Log::get_client_logger()->warn(__VA_ARGS__)
-#define PHO_INFO(...) ::PhoLib::Log::get_client_logger()->info(__VA_ARGS__)
-#define PHO_FATAL(...) ::PhoLib::Log::get_client_logger()->fatal(__VA_ARGS__)
+#define PHO_TRACE(...) ::pholib::Log::get_client_logger()->trace(__VA_ARGS__)
+#define PHO_ERROR(...) ::pholib::Log::get_client_logger()->error(__VA_ARGS__)
+#define PHO_WARN(...) ::pholib::Log::get_client_logger()->warn(__VA_ARGS__)
+#define PHO_INFO(...) ::pholib::Log::get_client_logger()->info(__VA_ARGS__)
+#define PHO_FATAL(...) ::pholib::Log::get_client_logger()->fatal(__VA_ARGS__)
+

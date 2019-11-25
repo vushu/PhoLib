@@ -13,7 +13,7 @@ add_subdirectory(pholib)
 add_subdirectory(sandbox)
 
 
-install(EXPORT spdlog-config DESTINATION share/glad/cmake)
-install(EXPORT glad-config DESTINATION share/spdlog/cmake)
-install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)
+#install(EXPORT spdlog-config DESTINATION share/glad/cmake)
+#install(EXPORT glad-config DESTINATION share/spdlog/cmake)
+install(EXPORT pholibConfig DESTINATION share/pholib/cmake)
 

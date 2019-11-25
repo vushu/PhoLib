@@ -1,7 +1,7 @@
 
-#include "PhoLib/pholib.h"
+#include "pholib/pholib.h"
 
-class SandboxApp : public PhoLib::Application {
+class SandboxApp : public pholib::Application {
     public:
         // constructors, asssignment, destructor
         SandboxApp() {}
