@@ -29,12 +29,20 @@ namespace PhoLib {
 
     enum class Event_type {
         none = 0,
-        window_close,
-        window_resize,
+        window_close, window_resize, window_focus, window_lost_focus, window_moved,
+        app_tick, app_update, app_render,
+        key_pressed,key_released,
+        mouse_button_pressed, mouse_button_released, mouse_moved, mouse_scrolled,
     };
 
     enum class Event_category {
         none = 0,
-        EventCategoryApplication = BIT(0),
+        event_category_application = BIT(0),
+        event_category_input = BIT(1),
+        event_category_keyboard = BIT(2),
+        event_category_mouse = BIT(3),
+        event_category_mouse_button = BIT(4),
     };
+
+
 }

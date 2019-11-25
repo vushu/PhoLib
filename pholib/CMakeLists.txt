@@ -21,9 +21,22 @@ set(SOURCE_FILES
     src/core/application.cpp
     )
 
+file(GLOB ALL_SOURCES
+    "*.h"
+    "*.cpp"
+    )
+
 project(PhoLib VERSION ${PROJECT_VERSION} DESCRIPTION "PhoLib a simple and small library for game development")
 
-add_library(${PROJECT_NAME} SHARED ${PHOLIB_INCLUDE_DIRS} ${SOURCE_FILES} )
+file(GLOB_RECURSE source_list
+    "${CMAKE_CURRENT_LIST_DIR}/src/core/*.cpp")
+
+file(GLOB_RECURSE header_list
+    "${CMAKE_CURRENT_LIST_DIR}/include/*.h")
+
+#add_library(${PROJECT_NAME} SHARED ${source_list})
+#add_library(${PROJECT_NAME} SHARED ${PHOLIB_INCLUDE_DIRS} ${SOURCE_FILES})
+add_library(${PROJECT_NAME} SHARED ${header_list} ${source_list})
 #window compatibility
 set(CMAKE_WINDOW_EXPORT_ALL_SYMBOLS ON)
 
@@ -57,10 +70,13 @@ find_package(PkgConfig REQUIRED)
 #pkg glfw3
 pkg_search_module(GLFW REQUIRED glfw3)
 
-include_directories(${GLFW_INCLUDE_DIRS} ${SPDLOG_INCLUDE_DIR})
+include_directories(
+    ${GLFW_INCLUDE_DIRS}
+    ${SPDLOG_INCLUDE_DIR}
+    ${GLAD_INCLUDE_DIR})
 
 #target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} spdlog)
+target_link_libraries(${PROJECT_NAME} spdlog glad)
 
 install(TARGETS ${PROJECT_NAME} spdlog
     EXPORT PhoLibConfig
@@ -70,7 +86,7 @@ install(TARGETS ${PROJECT_NAME} spdlog
 
 install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
-export(TARGETS ${PROJECT_NAME} spdlog FILE PhoLibConfig.cmake)
+export(TARGETS ${PROJECT_NAME} spdlog glad FILE PhoLibConfig.cmake)
 
 #install(EXPORT spdlog-config DESTINATION share/spdlog/cmake)
 #install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)

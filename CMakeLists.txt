@@ -8,14 +8,12 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 include(vendor/install.cmake)
-#include_directories(${CMAKE_SOURCE_DIR}/vendor/)
-#add_subdirectory(vendor/spdlog)
-find_package(spdlog)
 
 add_subdirectory(pholib)
 add_subdirectory(sandbox)
 
 
-install(EXPORT spdlog-config DESTINATION share/spdlog/cmake)
+install(EXPORT spdlog-config DESTINATION share/glad/cmake)
+install(EXPORT glad-config DESTINATION share/spdlog/cmake)
 install(EXPORT PhoLibConfig DESTINATION share/PhoLib/cmake)
 

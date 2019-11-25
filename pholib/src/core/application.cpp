@@ -29,7 +29,6 @@
  */
 #include "PhoLib/core/application.h"
 #include "PhoLib/core/log.h"
-//#include ""
 namespace PhoLib {
 
     Application::Application() {

@@ -14,3 +14,16 @@ target_include_directories(spdlog INTERFACE
     $<INSTALL_INTERFACE:include>)
 
 install(TARGETS spdlog EXPORT spdlog-config DESTINATION include)
+
+
+#GLAD
+
+set(GLAD_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLAD/include)
+install(DIRECTORY ${GLAD_INCLUDE_DIR}/glad DESTINATION include)
+
+add_library(glad INTERFACE)
+target_include_directories(glad INTERFACE
+    $<BUILD_INTERFACE:${GLAD_INCLUDE_DIR}>
+    $<INSTALL_INTERFACE:include>)
+
+install(TARGETS glad EXPORT glad-config DESTINATION include)
